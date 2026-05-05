@@ -9,8 +9,8 @@
     "server": "nodemon server/server.js",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "cd client && npm install && npm run build && cd .. && npm install",
-    "render-build": "cd client && npm install && npm run build && cd .. && npm install"
+    "build": "cd client && npm install --production=false && npm run build && cd .. && npm install",
+    "render-build": "cd client && npm install --production=false && npm run build && cd .. && npm install"
   },
   "dependencies": {
     "bcryptjs": "^3.0.3",
