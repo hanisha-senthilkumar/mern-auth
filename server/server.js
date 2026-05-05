@@ -3,6 +3,9 @@ import cors from 'cors';
 import 'dotenv/config.js';
 import cookieParser from 'cookie-parser';
 import helmet from "helmet";
+import fs from 'fs';
+import path from 'path';
+import util from 'util';
 import connectDB from './config/mongodb.js';
 import authRouter from './routes/authRoutes.js';
 import userRouter from './routes/userRoutes.js';
@@ -38,19 +41,25 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 app.use(cookieParser());
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('API Working !');
-});
-
 // Routes
 app.use('/api/auth', authRouter);
 app.use('/api/user', userRouter);
 
-import fs from 'fs';
-import path from 'path';
+// ✅ SERVE FRONTEND (PRODUCTION)
+const __dirname = path.resolve();
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist', 'index.html'));
+  });
+} else {
+  // Test route for dev
+  app.get('/', (req, res) => {
+    res.send('API Working !');
+  });
+}
 
-import util from 'util';
+
 
 const logStream = fs.createWriteStream(path.join(process.cwd(), 'server.log'), { flags: 'a' });
 const log = (...args) => {
