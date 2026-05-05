@@ -9,10 +9,20 @@
     "server": "nodemon server/server.js",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm install --prefix client && npm run build --prefix client && npm install --prefix server",
-    "render-build": "npm install --prefix client && npm run build --prefix client && npm install --prefix server"
+    "build": "npm install --prefix client && npm run build --prefix client && npm install",
+    "render-build": "npm install --prefix client && npm run build --prefix client && npm install"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.0.2",
+    "nodemailer": "^7.0.12",
+    "nodemon": "^3.1.11",
     "concurrently": "^9.1.2"
   }
 }
