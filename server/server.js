@@ -48,7 +48,7 @@ app.use('/api/user', userRouter);
 // ✅ SERVE FRONTEND (PRODUCTION)
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(process.cwd(), 'client', 'dist')));
-  app.get('/*', (req, res) => {
+  app.get('*', (req, res) => {
     res.sendFile(path.join(process.cwd(), 'client', 'dist', 'index.html'));
   });
 } else {
