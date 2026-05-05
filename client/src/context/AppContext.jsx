@@ -8,7 +8,7 @@ axios.defaults.withCredentials = true;
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const AppContextProvider =(props) => {
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    const backendUrl = import.meta.env.VITE_BACKEND_URL || window.location.origin;
 
     const [isLoggedin,setIsLoggedin] = useState(false)
     const [userData,setUserData] = useState(false)
