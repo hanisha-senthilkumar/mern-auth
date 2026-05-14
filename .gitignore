@@ -9,3 +9,16 @@ logs/
 dist/
 build/
 coverage/
+
+# Local Scripts & Batch Files
+*.bat
+server/test_*
+server/*.log
+server/*.txt
+
+# Temporary Instruction Guides
+DEPLOYMENT_GUIDE.md
+GIT_PUSH_INSTRUCTIONS.md
+SETUP_INSTRUCTIONS.md
+TOKEN_ISSUE_FIXES.md
+TOKEN_VERIFICATION_FIX.md
